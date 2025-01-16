@@ -1,0 +1,10 @@
+{
+    "name": "Bob",
+    "age": 35,
+    "is_student": false,
+    "address": {
+        "street": "Harmony Ave",
+        "number": 45
+    },
+    "children": ["Martha", "Betty"]
+}
