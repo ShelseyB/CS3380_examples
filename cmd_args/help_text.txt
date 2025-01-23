@@ -1,0 +1,4 @@
+Flags:
+-c or --cflag: does the c option
+-b or --bflag: does the b option
+-d or --debug: Enables debug mode

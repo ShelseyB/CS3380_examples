@@ -1,0 +1,15 @@
+{
+  "name": "cmd_args",
+  "version": "1.0.0",
+  "main": "cmd_line_args_example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node cmd_line_args_example.js -d -c",
+    "cflag": "node cmd_line_args_example.js -c",
+    "help": "node cmd_line_args_example.js -h"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}
