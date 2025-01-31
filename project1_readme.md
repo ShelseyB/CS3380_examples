@@ -112,3 +112,16 @@ const addItems = (...items) => {
     return true;
 }
 ```
+
+## Contributing Guidelines
+Use the following steps to contribute:
+1. Clone the repo
+2. Branch off of main
+3. Create a pull request
+
+## Progress towards version 2
+- [x] Task 1
+- [ ] Task 2
+
+## Full Documentation
+[Full documentation](google.com)
