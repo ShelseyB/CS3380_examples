@@ -104,3 +104,11 @@ Sorry, you don't have anything on your list yet!
   Enter a, b, c or d to continue e
 Thanks for playing!
 ```
+
+Here is a function in the program:
+```javascript
+const addItems = (...items) => {
+    list.push(items);
+    return true;
+}
+```
