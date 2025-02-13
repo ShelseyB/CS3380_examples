@@ -1,6 +1,6 @@
 {
-  "name": "output",
-  "version": "2.0.1",
+  "name": "globbing",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -8,9 +8,8 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "type": "module",
   "dependencies": {
-    "chalk": "^5.4.1",
-    "progress": "^2.0.3"
-  },
-  "type": "module"
+    "glob": "^11.0.1"
+  }
 }
