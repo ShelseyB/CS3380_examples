@@ -2,17 +2,17 @@ import path from "path";
 import {glob} from "glob";
 
 function useStar() {
-    const allFiles = glob.sync("*");
-    console.log("allFiles: *", allFiles);
+    // const allFiles = glob.sync("*");
+    // console.log("allFiles: *", allFiles);
 
-    const jsFiles = glob.sync("*js");
-    console.log("jsFiles: *js", jsFiles);
+    // const jsFiles = glob.sync("*js");
+    // console.log("jsFiles: *js", jsFiles);
 
     // const jsonFiles = glob.sync("*js*");
     // console.log("jsonFiles: *js*", jsonFiles);
 
-    // const txtFiles = glob.sync("b*txt");
-    // console.log("txtFiles: b*txt", txtFiles);
+    const txtFiles = glob.sync("b*txt");
+    console.log("txtFiles: b*txt", txtFiles);
 }
 
 // useStar();
@@ -82,9 +82,9 @@ function parenthesisExample() {
 // parenthesisExample();
 
 function globStar() {
-    const subDirs = glob.sync("**");
+    const subDirs = glob.sync("**", { ignore: 'node_modules/**' });
     console.log("subDirs: **", subDirs);
 }
 
-// globStar();
+globStar();
 
