@@ -1,0 +1,18 @@
+{
+	"hello": "hello",
+	"hello world": "hello world",
+	"help": {
+		"-p for selecting filepath": "-p for selecting filepath",
+		"test": {
+			"this": "this"
+		}
+	},
+	"%s dog": {
+		"one": "%s dog",
+		"other": "%s dogs"
+	},
+	"%s cat": {
+		"one": "%s cat",
+		"other": "%s cat"
+	}
+}

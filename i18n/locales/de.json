@@ -1,0 +1,15 @@
+{
+	"hello": "hallo",
+	"hello world": "hallo welt",
+	"help": {
+		"-p for selecting filepath": "-p fur filepath selektieren",
+		"test": {
+			"this": "dies"
+		}
+	},
+    "%s dog": {
+        "one": "%s Hund",
+        "other": "%s Hunde"
+    },
+    "Hello %s, how are you today?": "Hallo %s, wie geht's heute?"
+}

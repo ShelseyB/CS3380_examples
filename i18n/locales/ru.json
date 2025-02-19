@@ -1,0 +1,18 @@
+{
+	"%s cat": {
+		"one": "%d кошка",
+		"few": "%d кошки",
+		"many": "%d кошек",
+		"other": "%d кошка"
+	},
+	"hello": "hello",
+	"hello world": "hello world",
+	"helptxt": {
+		"first": "helptxt.first"
+	},
+	"%s dog": {
+		"one": "%s dog",
+		"other": "%s dog"
+	},
+	"Hello %s, how are you today?": "Привет, %s, как дела сегодня?"
+}
