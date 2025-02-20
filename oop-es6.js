@@ -30,13 +30,19 @@ myAdmin.getCourse();
 
 
 class Rectangle {
+    #id
     constructor(width, height) {
         this._width = width;
         this._height = height;
+        this.#id = Math.floor(Math.random() * 50);
     }
 
     get area() {
         return this._width * this._height;
+    }
+
+    get id() {
+        return this.#id;
     }
 
     set width(value) {
@@ -46,9 +52,65 @@ class Rectangle {
             console.log("Width must be greater than 0");
         }
     }
+
+    static displayAreaFormula() {
+        console.log("Area = width * height")
+    }
+}
+
+Rectangle.describe = function() {
+    console.log("A rectangle is a shape with four sides, where the corners are 90 degrees")
 }
 
 const rect = new Rectangle(14, 56);
 console.log("area", rect.area);
 rect.width = 2;
 console.log("area", rect.area);
+console.log(rect._width, "width");
+console.log("id",  rect.id);
+
+Rectangle.displayAreaFormula();
+Rectangle.describe();
+// rect.displayAreaFormula();
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a sound`);
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
+    }
+
+    speak() {
+        console.log(`${this.name} barks`);
+    }
+}
+
+
+class Cat extends Animal {
+    constructor(name) {
+        super(name);
+    }
+
+    speak() {
+        console.log(`${this.name} meows`);
+    }
+}
+
+const myDog = new Dog("Fido", "Dachshund");
+const myCat = new Cat("Milly");
+
+function makeSound(animal) {
+    animal.speak();
+}
+
+makeSound(myDog);
+makeSound(myCat)
