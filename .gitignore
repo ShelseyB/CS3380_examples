@@ -1,5 +1,4 @@
 node_modules/*
 /battleship
 /servers
-/typescript
 */node_modules
