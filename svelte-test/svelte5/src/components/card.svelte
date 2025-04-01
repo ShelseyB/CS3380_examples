@@ -4,9 +4,11 @@
 
 <div class="container">
 	Flip the card
-    <!--class="card {flipped ? 'flipped' : ''} "-->
-	<button
+    <!--class="card {flipped ? 'flipped' : ''} "
 		class={["card", {flipped}]}
+	-->
+	<button
+		class={["card", {flipped}, "test"]}
 		onclick={() => flipped = !flipped}
 	>
 		<div class="front">

@@ -32,7 +32,7 @@ async function callFetch() {
 // callFetch();
 
 const baseURL = "https://opentdb.com/api.php?amount=3";
-const queries = ["&category=20&difficulty=easy&type=multiple", "&category=20&difficulty=medium"];
+const queries = ["&category=20&type=multiple", "&category=20&difficulty=medium"];
 
 const waitAndGetNext = async (results, queries) => {
     if (queries.length) {
@@ -45,7 +45,7 @@ const waitAndGetNext = async (results, queries) => {
                         const fetchRes = await waitAndGetNext([...results, r], queries);
                         console.log("fetchRes", fetchRes);
                         res([...results, r]);
-                    }, 5500);
+                    }, 5010);
                 });
         });
         const fetchRes = await fetchProm;

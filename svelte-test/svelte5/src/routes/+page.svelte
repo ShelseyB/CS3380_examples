@@ -76,7 +76,7 @@
 
 
 {#each todos as todo}
-    <TodoItem title={todo.title} onRemove={() => todos.filter(td => td.id !== todo.id)} test="test"/>
+    <TodoItem title={todo.title} onRemove={() => removeToDo(todo.id)} test="test"/>
 {/each}
 
 <Card/>
