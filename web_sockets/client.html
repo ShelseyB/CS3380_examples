@@ -1,0 +1,40 @@
+<html>
+    <!DOCTYPE html>
+    <head>
+        <Title>Test Framework</Title>
+    </head>
+    <body>
+        <div id="main">
+            <button>Send message</button>
+            <button id="close">Close Websocket</button>
+        </div>
+        <script>
+            const socket =  new WebSocket("ws://localhost:3000");
+
+            socket.onopen = () => {
+                console.log("Socket has been opened");
+                socket.send("Hello server!");
+            };
+
+            socket.onmessage = (event) => {
+                console.log("Message from server: ", event.data);
+            }
+
+            socket.onclose = () => {
+                console.log("Websocket has closed");
+            }
+
+            // Add event listener to button to send message
+            const btn = document.querySelector("button");
+
+            btn.addEventListener("click", () => {
+                socket.send("Button got clicked");
+            })
+
+            const closeBtn = document.getElementById("close");
+            closeBtn.addEventListener("click", () => {
+                socket.close();
+            })
+        </script>
+    </body>
+</html>
