@@ -15,31 +15,44 @@
         <script>
             const socket =  io();
             
-            socket.on("welcome", (data) => {
-                console.log("data", data);
-            });
-
-            socket.on("chat message", (msg) => {
-                console.log("chat message", msg);
+            // Connecting to a custom namespace
+            const chatSocket = io('/chat');
+            chatSocket.on('message', (data) => {
+                console.log(data);
                 const itm = document.createElement("p");
-                itm.textContent = msg;
+                itm.textContent = data;
                 document.getElementById("messages").appendChild(itm);
+                
+
+                // Sending a message within the chat namespace
+                chatSocket.emit('message', 'Hello, chat!');
             });
 
-            socket.on("disconnect", () => {
-                console.log("Socket disconnected");
+            chatSocket.on("disconnect", () => {
+                console.log("chat socket disconnected")
+            })
+
+            const notificationsSocket = io('/notifications');
+            notificationsSocket.on('message', (data) => {
+                console.log(data);
+            });
+
+            notificationsSocket.on("disconnect", () => {
+                console.log("notifications socket disconnected")
             })
 
             // Add event listener to button to send message
             const btn = document.querySelector("button");
 
             btn.addEventListener("click", () => {
-                socket.emit("chat message", "Button got clicked");
+                console.log("sending message to chat socket")
+                chatSocket.emit("message", "Button got clicked");
             })
 
             const closeBtn = document.getElementById("close");
             closeBtn.addEventListener("click", () => {
-                socket.disconnect(true);
+                chatSocket.disconnect(true);
+                notificationsSocket.disconnect(true);
             })
         </script>
     </body>
