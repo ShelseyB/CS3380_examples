@@ -52,9 +52,11 @@
 <main>
   <p>{status}</p>
   <p>{playerID}</p>
-  {#each gameBoard as square, idx}
-    <button class="game-square" onclick={() => playerMove(idx)}>{square}</button>
-  {/each}
+  <div class="grid">
+    {#each gameBoard as square, idx}
+      <button class="game-square" onclick={() => playerMove(idx)}>{square}</button>
+    {/each}
+  </div>
 </main>
 
 <style>
@@ -62,5 +64,10 @@
     width: 100px;
     height: 100px;
     border: 1px black solid;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
 </style>
