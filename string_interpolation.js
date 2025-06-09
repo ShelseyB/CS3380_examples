@@ -1,31 +1,28 @@
-// Function to create a detailed greeting with birth year calculation
-function createDetailedGreeting(name, age) {
-  // const newStr = `Blah blah ${name} blah blah ${age}`
-    
-    // Calculate birth year
-    // const birthYear = 2025 - age;
-    function calcBirthYear(age) {
-      return 2025 - age;
-    }
+const hello = "hello";
+const name = "Bob";
 
-    // create message 
-    const msg = `Hello, ${name}! You are ${age} years old, 
+console.log(hello + " " + name);
+
+console.log(`${hello} ${name}!`);
+
+function createDetailedGreeting(name, age) {
+  function calcBirthYear(age) {
+    return 2025 - age;
+  }
+
+  const msg = `Hello, ${name}! You are ${age} years old,
 and you were born in ${calcBirthYear(age)}. Dang, ${name}, you are ${
   age > 25 ? 
-  "old" : 
-  "young"}!`;
+    "old" : 
+    "young"
+}!`;
 
-    // return message
-    return msg;
-  }
-  
-  // Example usage
-  const userName = 'Bob';
-  const userAge = 45;
-  
-  // Generate the detailed greeting message
-  const detailedMessage = createDetailedGreeting(userName, userAge);
-  
-  // Output the detailed message
-  console.log(detailedMessage);
-  // Output: "Hello, Bob! You are 25 years old, and you were born in 1999."
+  return msg;
+}
+
+const detailedMsg = createDetailedGreeting("Bob", 24);
+const detailedMsg2 = createDetailedGreeting("Jimmy", 44);
+
+// Output the message
+console.log(detailedMsg);
+console.log(detailedMsg2);
