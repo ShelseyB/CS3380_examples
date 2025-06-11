@@ -1,53 +1,33 @@
-import inquirer from 'inquirer';
+import inquirer from "inquirer";
 
-function promptBasedOnAge(age) {
-
-    inquirer
-      .prompt([
-        /* Pass your questions in here */
+function main() {
+    const questions = [
         {
             type: "input",
-            name: "socials",
-            message: age > 30 ? "Are you on FaceBook?" : "What's your IG handle?"
+            name: "name",
+            message: "What's your name?",
+            waitUserInput: true
+        },
+        {
+            type: "number",
+            name: "age",
+            message: "What's your age?",
+            waitUserInput: true
+        },
+        {
+            type: "checkbox",
+            name: "hobbies",
+            message: "What's your hobbies?",
+            waitUserInput: true,
+            choices: ["knitting", "programming", "soccer"]
         }
-      ])
-      .then((answers) => {
-        // Use user feedback for... whatever!!
-        console.log("answers", answers);
-      })
-      .catch((error) => {
-        if (error.isTtyError) {
-          // Prompt couldn't be rendered in the current environment
-        } else {
-          // Something else went wrong
-        }
-      });
+    ];
 
+    inquirer.prompt(questions)
+        .then(resp => {
+            console.log(resp);
+            console.log(`Hello ${resp.name}! You are ${resp.age} years old! Your hobbies are ${resp.hobbies.join(", ")}`)
+        })
 }
 
-inquirer
-  .prompt([
-    /* Pass your questions in here */
-    {
-        type: "input",
-        name: "name1",
-        message: "What is your name?"
-    },
-    {
-        type: "number",
-        name: "age",
-        message: "What is your age?"
-    }
-  ])
-  .then((answers) => {
-    // Use user feedback for... whatever!!
-    console.log("answers", answers);
-    promptBasedOnAge(answers.age);
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
+main();
