@@ -6,5 +6,6 @@
         "street": "Harmony Ave",
         "number": 45
     },
-    "children": ["Martha", "Betty"]
+    "children": ["Martha", "Betty"],
+    "spouse": null
 }
