@@ -1,64 +1,65 @@
-// const promise = new Promise((resolve, reject) => {
-//     if (/**successful */ true) {
-//         resolve()
-//     } else {
-//         reject();
-//     }
-// })
+function thatRunsAsync(cb) {
+    /*
+    Bunch of code that takes a long time to run
+    */
+   cb();
+}
+
+thatRunsAsync(() => console.log("Whew, glad that's over"));
+
+console.log()
 
 const fetchData = new Promise((resolve, reject) => {
-    const data = `{"blah": 1, "boop": 2}`;
+    let data = { name: "Bobby", age: 34};
 
     setTimeout(() => {
-        // resolve(data);
-        reject("I didn't feel like doing this")
-    }, 2000);
-});
-const fetchData2 = new Promise((resolve, reject) => {
-    const data = `{"blah": 3, "boop": 4}`;
-
-    setTimeout(() => {
-        // if (Math.random() > .5) {
-            resolve(data);
-        // } else {
-        //     reject("I didn't feel like doing this")
-        // }
-    }, 2000);
+        console.log("in timeout");
+        let fail = false; // Set to true to test failure
+        if (fail) {
+            reject("Hey, it failed :(");
+        }
+        // Simulate success
+        resolve(data);
+    }, 2000); // Time in milliseconds
 });
 
-// fetchData.then(data => {
-//     console.log("data", data);
-//     return JSON.parse(data)
-// }).then(parsed_data => {
-//     console.log("parsed data", parsed_data);
-// }).catch((reason) => {
-//     console.log("reason", reason)
-// }).finally(() => {
-//     console.log("in finally")
-// })
+console.log("After Promise");
+console.log(fetchData);
 
-// Promise.all([fetchData, fetchData2]).then(results => {
-//     console.log("results", results);
-// }).catch(err => console.error(err));
+fetchData
+    .then(result => result.age)
+    .then((result) => console.log("Data received:", result))
+    .catch(err => console.error(err))
+    .finally(() => console.log("It's over"));
 
-// Promise.race([fetchData, fetchData2]).then(results => {
-//     console.log(results);
-// }).catch(err => console.error(err));
+// Handling Multiple Promises
+const promise1 = new Promise(resolve => resolve('First promise resolved'));
+const promise2 = new Promise(resolve => resolve('Second promise resolved'));
 
-async function async_func() {
+// Get results from all promises
+Promise.all([promise1, promise2])
+    .then(results => console.log(results))
+    .catch(error => console.log(error));
+
+// Only grabs the data from promise that fulfills first
+Promise.race([promise1, promise2])
+    .then(results => console.log("results in race", results))
+    .catch(error => console.log(error));
+
+// Async and await
+
+async function waitForMe() {
+    return {a: 1};
+}
+async function funcThatRunsAsync() {
     try {
-        const data_from_promise = await fetchData;
-        console.log(data_from_promise);
-        return fetchData;
+        const data = await waitForMe();
+        console.log("data in funcThatRunsAsync", data);
+        return data;
     } catch (err) {
-        console.log('error in async_func', err);
-        throw err;
+        console.log(err);
     }
 }
 
-async function async_func2() {
-    const awaited_data = await async_func();
-    console.log("awaited_data", awaited_data);
-}
-
-async_func2()
+funcThatRunsAsync();
+funcThatRunsAsync().then(d => console.log("d", d));
