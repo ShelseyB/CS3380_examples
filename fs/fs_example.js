@@ -15,13 +15,14 @@ function writeFileExamples() {
     });
 
     // Synchronous version
-    fs.writeFileSync("./test_dir/test_sync.txt", "Write this file synchronously");
+    fs.writeFileSync("./test_dir/test_sync.txt", "Test test");
 
     console.log("after writing file synchronously")
 
     // Promise version
     fs_prom.writeFile("./test_dir/test_promise.txt", "Another test file blah")
-        .then(res => console.log("res of write_file promise", res));
+        .then(res => console.log("res of write_file promise", res))
+        .catch(err => console.log(err));
 
     const obj = {
         a: 1,
@@ -39,7 +40,7 @@ function readFileExamples() {
         const lines = data.split("\r\n");
         const nums = [];
         lines.forEach(l => {
-            nums.push(l.split(", "))
+            nums.push(l.split(", ").map(n => Number(n)))
         });
         console.log("nums", nums);
     });
@@ -88,9 +89,9 @@ function deleteExample() {
     // }
 
     // Can check if the file exists before attempting to delete it
-    if (fs.existsSync("test.txt")) {
+    if (fs.existsSync("./test_dir/test_sync.txt")) {
         console.log("deleting file")
-        fs.unlinkSync("test.txt");
+        fs.unlinkSync("./test_dir/test_sync.txt");
     } else {
         console.log("whoops, can't delete that file, it doesn't exist")
     }
@@ -101,8 +102,8 @@ function readDirExample() {
     const files = fs.readdirSync(dir);
     console.log("files", files);
     files.forEach(file => {
-        console.log(file);
         const file_path = path.join(dir, file); // returns test_dir/{filename}
+        console.log(file_path);
         const stat = fs.statSync(file_path);
         if (stat.isDirectory()) {
             const subdir_files = fs.readdirSync(file_path);
@@ -112,10 +113,10 @@ function readDirExample() {
 }
 
 function main() {
-    // writeFileExamples();
-    // readFileExamples();
-    // statExamples();
-    // deleteExample();
+    writeFileExamples();
+    readFileExamples();
+    statExamples();
+    deleteExample();
     readDirExample();
 
     /**
