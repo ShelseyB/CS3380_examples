@@ -1,5 +1,8 @@
-import users, {getUsersOverAge, getUsersUnderAge} from "./users.js";
+import users, { getUsersOverAge as gUOA, getUsersUnderAge, myBFFsName, bestAge} from "./users.js";
 
-console.log('users', users, getUsersOverAge);
+console.log(gUOA(23), getUsersUnderAge(30), myBFFsName, bestAge);
 
-// console.log("filteredUsers", getUsersOverAge(23));
+import("./users.js")
+    .then((userModule) => {
+        console.log(userModule);
+    });

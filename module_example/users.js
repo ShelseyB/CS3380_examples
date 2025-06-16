@@ -30,3 +30,10 @@ export function getUsersUnderAge(age) {
         return user.age < age;
     })
 }
+
+export const myBFFsName = "Gertrude";
+
+const bestAge = 74;
+const worstAge = 45;
+
+export { bestAge, worstAge };
