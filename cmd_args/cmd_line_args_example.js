@@ -1,85 +1,48 @@
-import fs from "node:fs/promises";
-
-// Grab the passed in arguments
+import fs from "node:fs";
 const args = process.argv.slice(2);
 
-console.log("args", args);
+console.log(args);
 
-function doB(debugMode) {
-    if (debugMode) console.log("There was a b flag");
+let options = {
+    aFlag: false,
+    bFlag: false,
+    cFlag: false,
+    lang: false,
+    help: false
 }
 
-function doC(debugMode) {
-    if (debugMode) console.log("There was a c flag");
+for (let i = 0; i < args.length; i++) {
+    switch (args[i]) {
+        case "-a":
+        case "--aFlag":
+            options.aFlag = true;
+            break;
+        case "-l":
+        case "--lang":
+            options.lang = args[i + 1];
+            break;
+        case "--help":
+        case "-h":
+            options.help = true;
+    }
 }
 
 function main() {
-    let options = {
-        bFlag: false,
-        cFlag: false,
-        nameFlag: false,
-        name: ""
-    };
 
-    // args.forEach(arg => {
-    //     if (arg === "-b" || arg === "--bflag") {
-    //         options.bFlag = true;
-    //     } else if (arg === "-c" || arg === "--cflag") {
-    //         options.cFlag = true;
-    //     } else if (arg === "-d" || arg === "--debug") {
-    //         options.debugMode = true;
-    //     }
-    // });
-
-//     const help_text = `
-// Flags:
-// -c or --cflag: does the c option
-// -b or --bflag: does the b option
-// -d or --debug: Enables debug mode
-// `
-
-    const flags = ["-b", "-c", "--bflag"];
-    console.log("args", args);
-    for (let i = 0; i < args.length; i++) {
-        const arg = args[i];
-        if (arg === "-b" || arg === "--bflag") {
-            options.bFlag = true;
-        } else if (arg === "-c" || arg === "--cflag") {
-            options.cFlag = true;
-        } else if (arg === "-d" || arg === "--debug") {
-            options.debugMode = true;
-        } else if (arg === "--name") {
-            options.nameFlag = true;
-            options.name = args[i + 1];
-            if (typeof options.name === "undefined" || flags.includes(options.name)) {
-                console.error("Name is required");
-                return;
-            }
-            i += 1;
-        } else if (arg === "-h" || arg === "--help") {
-            // console.log(help_text);
-            fs.readFile("./help_text.txt", "utf8")
-                .then(file_contents => {
-                    console.log(file_contents);
-                })
-        }
+    if (options.help) {
+        const helpTxt = fs.readFileSync("./help_text.txt", "utf8");
+        console.log(helpTxt);
+        return;
     }
 
-    if (options.nameFlag) {
-        console.log(`Why hello there, ${options.name}`)
+    if (options.aFlag) {
+        console.log("a flag has been triggered");
     }
-
-    if (options.bFlag) {
-        doB(options.debugMode);
+    if (options.lang) {
+        console.log("The language is", options.lang);
     }
-
     if (options.cFlag) {
-        doC(options.debugMode);
-    }
-
-    if (!options.bFlag && !options.cFlag) {
-        console.warn("No parameters were given, -b or -c is required")
+        console.log("c flag has been triggered");
     }
 }
-
 main();
