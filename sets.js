@@ -17,8 +17,8 @@ console.log(set1);
 set1.clear();
 console.log(set1);
 
-for (let value of set2) {
-    console.log("value", value);
+for (let v of set2) {
+    console.log("v", v);
 }
 
 set2.forEach(value => {
@@ -33,26 +33,35 @@ const setB = new Set([3, 4, 5, 6]);
 
 console.log(setA.difference(setB));
 
-// Intersection
-console.log(setA.intersection(setB));
+// Intersection (A ∩ B)
+console.log(setB.intersection(setA));
 
-// Symmetric Difference
+// Symmetric Difference (A∖B)∪(B∖A)
 console.log(setA.symmetricDifference(setB));
 
-// Union
+// Union A∪B
 console.log(setA.union(setB));
 
-// is disjointed?
+// is disjointed? A∩B=∅
 const setC = new Set([7, 8, 9])
 console.log(setA.isDisjointFrom(setB), setA.isDisjointFrom(setC));
 
-// Subset
+// Subset A⊆B
 const setD = new Set([1]);
 console.log(setA.isSubsetOf(setD), setD.isSubsetOf(setA));
 
-// Superset
+// Superset A⊇B
 console.log(setA.isSupersetOf(setD), setD.isSupersetOf(setA));
 
 const map = new Map([[5, "blah"], [6, "blah2"]]);
 console.log(setA.union(map));
+
+function hi() {
+    console.log("hi");
+}
+
+const stringSet = new Set(["hi", "hello", "hi", {a: 2}, hi]);
+console.log(stringSet);
+
+console.log([...stringSet]);
 
