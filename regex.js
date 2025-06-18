@@ -1,6 +1,6 @@
 /** Regular Expressions */
 
-let regex1 = /.hello/;
+let regex1 = /hi/;
 let regex2 = new RegExp("there");
 
 const myStr = "hello there";
@@ -38,12 +38,12 @@ regex2 = /[A-Z]/;
 let regex3 = /[a-zA-Z]/;
 console.log(regex1.test(myStr), regex2.test(myStr), regex3.test(myStr));
 
-regex2 = /[l-p]/;
+regex2 = /[l-p]o/;
 regex3 = /[abp]/;
-console.log(regex2.test(myStr));
+console.log(regex2.test(myStr), regex3.test(myStr));
 
 regex1 = /[l-p]+[1-5]?/;
-console.log(regex1.test("this5"), regex1.test(myStr));
+console.log(regex1.test("this5"), regex1.test(myStr), regex1.test("lll55"));
 
 // Escaping special characters
 regex1 = /\?/;
@@ -77,9 +77,13 @@ regex2 = /\S/;
 console.log(regex1.test(myStr), regex1.test("\t"), regex1.test("\r"), regex1.test("hi"));
 console.log("\\S", regex2.test(myStr), regex2.test("\t"), regex2.test("\r"), regex2.test("hi"));
 
+// . Matches with anything
+regex1 = /./;
+console.log(regex1.test("j"), regex1.test("!"), regex1.test("+"), regex1.test(" "), regex1.test(""))
+
 // Example: email
 let email_regex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.com$/;
-console.log(email_regex.test("shelsey.sullivan@uvu.edu"), email_regex.test("sally_mae@gmail.com"), email_regex.test("bobby@gmail.com"));
+console.log(email_regex.test("shelsey.sullivan@uvu.edu"), email_regex.test("sally_mae@gmail.com"), email_regex.test("bobby87@gmail.com"));
 
 // match
 let phone_num = /\d+/;
@@ -95,6 +99,7 @@ console.log(phone_num_str.replace(phone_num, "******"));
 // Global matching
 phone_num = /\d+/g;
 console.log(phone_num_str.match(phone_num));
+console.log(phone_num_str.replace(phone_num, "*******"));
 
 // Case insensitive
 regex1 = /HellO/i;
