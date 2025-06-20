@@ -32,15 +32,15 @@ LibraryA.doTask({ data: 'some data' });
 LibraryB.executeTask('some data');
 
 const taskShim = {
-doTask: (options) => {
-    if (LibraryA) {
-        return LibraryA.doTask(options);
-    } else if (LibraryB) {
-        return LibraryB.executeTask(options.data);
-    } else {
-        throw new Error('No compatible library found');
+    doTask: (options) => {
+        if (LibraryA) {
+            return LibraryA.doTask(options);
+        } else if (LibraryB) {
+            return LibraryB.executeTask(options.data);
+        } else {
+            throw new Error('No compatible library found');
+        }
     }
-}
 };
 
 // Example usage:
