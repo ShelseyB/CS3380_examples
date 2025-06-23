@@ -111,6 +111,11 @@ function hello() {
 }
 \```
 
+\```html
+<body>
+</body>
+\```
+
 ### **Output:**  
 Use `console.log("Hello, World!");` to print a message.
 
