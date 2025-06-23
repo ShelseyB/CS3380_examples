@@ -112,6 +112,8 @@ function hello() {
 \```
 
 ### **Output:**  
+Use `console.log("Hello, World!");` to print a message.
+
 ```javascript
 function hello() {
   console.log("Hello, World!");
@@ -169,3 +171,4 @@ function hello() {
 
 ### **Output:**  
 🎉 🔥 ✔️  
+:tada: :fire: :white_check_mark:
