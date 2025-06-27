@@ -1,6 +1,6 @@
 {
   "name": "cs3380_examples",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "For single files (for example, `promises.js` or `string_interpolation.js`), simply run:",
   "main": "arrays.js",
   "scripts": {
