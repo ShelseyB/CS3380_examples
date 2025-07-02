@@ -32,11 +32,14 @@ myAdmin.getCourse();
 class Rectangle {
     #id
     constructor(width, height) {
+        // protected (just convention)
         this._width = width;
         this._height = height;
+        // private (truly private - not accessible outside of the class/object)
         this.#id = Math.floor(Math.random() * 50);
     }
 
+    // Getters
     get area() {
         return this._width * this._height;
     }
@@ -45,6 +48,16 @@ class Rectangle {
         return this.#id;
     }
 
+    // Private method
+    #calculateArea() {
+        return this.area;
+    }
+
+    printArea() {
+        console.log(this.#calculateArea());
+    }
+
+    // Setters
     set width(value) {
         if (value > 0) {
             this._width = value;
@@ -68,6 +81,7 @@ rect.width = 2;
 console.log("area", rect.area);
 console.log(rect._width, "width");
 console.log("id",  rect.id);
+rect.printArea();
 
 Rectangle.displayAreaFormula();
 Rectangle.describe();

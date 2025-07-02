@@ -1,9 +1,16 @@
 function User(name) {
     this.name = name;
 
+    let count = 0;
+
     // this.printName = () => {
     //     console.log(this.name);
     // }
+
+    this.increment = function() {
+        count++;
+        return count;
+    }
 }
 
 User.prototype.printName = function() {
@@ -13,6 +20,10 @@ User.prototype.printName = function() {
 let alice = new User("Alice");
 console.log("alice", alice, User);
 alice.printName();
+
+let bob = new User("Bob");
+console.log(bob.increment(), alice.increment(), bob.increment())
+bob.printName();
 
 // Inheritance
 const Admin = function(name, password, course) {
