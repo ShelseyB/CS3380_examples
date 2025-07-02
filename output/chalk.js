@@ -5,9 +5,11 @@ import chalk from "chalk";
 console.log(chalk.red("This is red text"));
 console.log(chalk.green("This is green text"));
 console.log(chalk.blue("This is blue text"));
+console.log(chalk.magenta("This is magenta text"));
 
 /** Custom Colors */
-console.log(chalk.rgb(123, 45, 67)("Custom color!"));
+const customBlue = chalk.rgb(119, 172, 229)
+console.log(customBlue("Custom color!"));
 console.log(chalk.hex('#FFA500')("Custom color 2"));
 
 // /** Setting variables */
@@ -32,6 +34,7 @@ console.log(chalk.bgRed.hidden("This text is hidden"));
 
 // // Custom background colors
 console.log(chalk.rgb(15, 100, 204).inverse('Hello!'));
+console.log(chalk.hex('#FFA500').inverse("Custom color 2"));
 
 // /** Chaining */
 console.log(chalk.red.bgBlue("This is chained")) // Colors on a colored bg don't work for me

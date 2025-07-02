@@ -42,7 +42,7 @@ const obj = {
         }
     }
 };
-console.dir(obj, {colors: true, depth: 1});
+console.dir(obj, {colors: true, depth: 0});
 console.log("obj", obj);
 Object.defineProperty(obj, 'hiddenProperty', {
     value: 'secret',
@@ -63,38 +63,51 @@ console.debug("Debug message: Warning at function %s: line number %d ", "ff()", 
 console.group('User Details');
 console.log('Name: Alice');
 console.log('Age: 25');
+console.group("Sub group");
+console.log("Sub1");
+console.log("Sub2");
+console.log("Sub3");
 console.groupEnd();
+console.groupEnd();
+console.log("After group")
 
 console.info("Info message!");
 console.info("sample info message with args: %d", 39);
 
-// console.trace("Tracing from here")
+function traceThis() {
+    console.trace("Error found!");
+}
 
-// // console.time(), console.timeLog(), and console.timeEnd()
+console.trace("Tracing from here")
+traceThis();
 
-// const label = "addCount Timer"
-// function addCount() { 
-//     let sum = 0; 
-//     for (let i = 1; i < 100000; i++) {
-//         sum += i; 
-//         if (sum % 1000 == 0) {
-//             console.timeLog(label)
-//         }
-//     }
-//     return sum; 
-// } 
-// console.time(label); 
+// console.time(), console.timeLog(), and console.timeEnd()
 
-// addCount(); 
+const label = "addCount Timer"
+function addCount() { 
+    let sum = 0; 
+    for (let i = 1; i < 100000; i++) {
+        sum += i; 
+        if (sum % 1000 == 0) {
+            console.timeLog(label)
+        }
+    }
+    return sum; 
+} 
+console.time(label); 
+
+addCount(); 
     
-// // // Ends the timer and print the time 
-// // // taken by the piece of code 
-// console.timeEnd(label); 
+// // Ends the timer and print the time 
+// // taken by the piece of code 
+console.log("before timeEnd")
+console.timeEnd(label); 
 
 /** String formatting */
 const items = [
     { name: 'Apples', price: 1.2 },
-    { name: 'Bananas', price: 0.8 }
+    { name: 'Bananas', price: 0.8 },
+    {name: "Very fruity fruit", price: 2}
 ];
 
 items.forEach(item => {
@@ -104,17 +117,20 @@ items.forEach(item => {
 console.log("42".padStart(5, "0"));
 console.log("42".padEnd(5, ".")); 
 
-console.log("\u00E9".normalize("NFC"));
+// Normalize Unicode strings
+console.log("\u00E9".normalize("NFC")); // NFC, NFD, NFKC, NFKD
 
 console.log(123.456.toPrecision(4));
-console.log(0.004567.toPrecision(2));
+console.log(0.0040567.toPrecision(3));
 
 console.log((123456).toExponential(2));
+console.log((.0000123456).toExponential(2));
 
+// Tables
 const arrayItems = items.map(it => it.name);
 console.table(items);
 console.table(arrayItems);
-console.table(items, ["name", "price"]);
+console.table(items, ["price"]);
 
 /** Logging Emojis */
 console.log('✔️ Task completed');
@@ -125,13 +141,13 @@ console.log('\u2714 Task completed'); // ✔
 console.log('\u274C Task failed'); 
 
 // /** Copy and paste from websites such as https://emojipedia.org/ */
-console.log("🐾");
+console.log("🐾 ✨");
 
-// /** Using VSCode
-//  * Windows: `Windows key` + .
-//  * MacOS: `Cmd` + `Ctrl` + `Space bar`
-//  */
-console.log("🎶 🎂");
+/** Using VSCode
+ * Windows: `Windows key` + .
+ * MacOS: `Cmd` + `Ctrl` + `Space bar`
+ */
+console.log("🎶 🎂 💚");
 
 /** Formatting using ANSI escape codes
  * \x1b[31m → Red text
@@ -141,7 +157,7 @@ console.log("🎶 🎂");
  * \x1b[4m → Underline
  * \x1b[41m → Red background
  */
-console.log("\x1b[32mGreen text\x1b[0m");
+console.log("\x1b[32mGreen text\x1b[0m plain text");
 console.log("\x1b[1;34mBold blue text\x1b[0m");
 console.log("\x1b[41mRed background\x1b[0m");
 
