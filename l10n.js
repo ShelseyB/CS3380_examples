@@ -1,8 +1,9 @@
-// Localization
+// Localization -> l<10 letters>n -> l10n
 
 // Dates
 
 const date = new Date();
+date.setDate(date.getDate() + 1);
 
 console.log(date);
 console.log(new Intl.DateTimeFormat("en-US").format(date));
@@ -24,6 +25,7 @@ const formatter = new Intl.NumberFormat("en-US", {
 console.log(formatter.format(500000));
 console.log(formatter.format(2000));
 console.log(formatter.format(20));
+console.log(formatter.format(1));
 
 
 const formatterES = new Intl.NumberFormat("es", {
