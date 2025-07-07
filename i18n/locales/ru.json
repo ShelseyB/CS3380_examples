@@ -5,8 +5,6 @@
 		"many": "%d кошек",
 		"other": "%d кошка"
 	},
-	"hello": "hello",
-	"hello world": "hello world",
 	"helptxt": {
 		"first": "helptxt.first"
 	},
@@ -14,5 +12,7 @@
 		"one": "%s dog",
 		"other": "%s dog"
 	},
-	"Hello %s, how are you today?": "Привет, %s, как дела сегодня?"
+	"Hello %s, how are you today?": "Привет, %s, как дела сегодня?",
+	"hello": "hello",
+	"hello world": "hello world"
 }

@@ -1,0 +1,19 @@
+{
+	"hello": "hello",
+	"hello world": "hello world",
+	"help": {
+		"-p for selecting filepath": "help.-p for selecting filepath",
+		"test": {
+			"this": "help.test.this"
+		}
+	},
+	"%s dog": {
+		"one": "%s dog",
+		"other": "%s dog"
+	},
+	"%s cat": {
+		"one": "%s cat",
+		"other": "%s cat"
+	},
+	"Hello %s, how are you today?": "Hello %s, how are you today?"
+}

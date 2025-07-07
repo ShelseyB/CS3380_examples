@@ -1,10 +1,11 @@
-const i18n = require("i18n");
-const path = require("path");
+// internationalization -> i<18 letters>n -> i18n
+import i18n from "i18n";
+// import path from "path";
 
 // Initialize i18n
 i18n.configure({
-    locales: ["en", "de", "ru"], // List of supported languages
-    directory: path.join(__dirname, "locales"), // Location of language files
+    locales: ["en", "de", "ru", "es"], // List of supported languages
+    directory: "./locales", // Location of language files
     defaultLocale: "en",
     objectNotation: true
 });
@@ -28,8 +29,7 @@ console.log(i18n.__n("%s dog", 1));
 console.log(i18n.__n("%s dog", 3));
 
 // Change locale
-// Change locale
-i18n.setLocale('ru')
+// i18n.setLocale('ru')
 
 // More plurals (Russian)
 console.log(i18n.__n('%s cat', 0)) // --> 0 кошек
@@ -40,6 +40,7 @@ console.log(i18n.__n('%s cat', 6)) // --> 6 кошек
 console.log(i18n.__n('%s cat', 21)) // --> 21 кошка
 
 // sprintf
-i18n.setLocale("de");
-console.log(i18n.__("Hello %s, how are you today?", "Bob"))
+// i18n.setLocale("de");
+let name = "Bob";
+console.log(i18n.__("Hello %s, how are you today?", name))
 

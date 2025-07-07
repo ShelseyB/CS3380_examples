@@ -1,14 +1,14 @@
 {
-  "name": "cs3380_examples",
-  "version": "1.0.1",
-  "description": "For single files (for example, `promises.js` or `string_interpolation.js`), simply run:",
-  "main": "arrays.js",
+  "name": "i18n",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
     "i18n": "^0.15.1"
   },
