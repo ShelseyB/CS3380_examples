@@ -118,3 +118,10 @@ function printPeople(people) {
     }
 }
 printPeople(persons);
+function getPeople() {
+    return persons;
+}
+function greetUsers(users, greeting) {
+    if (greeting === void 0) { greeting = "Wazzup??"; }
+    console.log("".concat(greeting, " ").concat(users.map(function (u) { return u.name; }).join(", ")));
+}

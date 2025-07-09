@@ -144,3 +144,9 @@ printPeople(persons);
 function getPeople(): Person[] {
     return persons;
 }
+
+function greetUsers(users: User[], greeting: any = "Wazzup??"): void {
+
+    console.log(`${greeting} ${users.map(u => u.name).join(", ")}`);
+
+}
