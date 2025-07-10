@@ -21,6 +21,7 @@ console.log("After pure function", myObj);
 impureFunction(myObj);
 console.log("After impure function", myObj);
 
+// Higher-Order Functions
 function addStuff(a, b) {
     console.log("add stuff", a, b)
     return a + b;
@@ -32,6 +33,7 @@ function doSomething(ftn) {
 
 console.log(doSomething(addStuff));
 
+// Partial functions
 function addStuffPositive(a, b) {
     if (a < 0 || b < 0) return;
     console.log("add stuff", a, b)
@@ -40,14 +42,13 @@ function addStuffPositive(a, b) {
 
 console.log(addStuffPositive(1, 2), addStuffPositive(-1, 2));
 
+// array functions to manipulate data
 let myArray = ["a", "b", "c"];
 console.log(myArray.map(it => it + " hello"), myArray);
 
-function funcName() {
-
-}
 console.log(myArray.filter(it => it > "b"), myArray);
 
+// Currying
 function brewCoffee(beans) {
     return function(water) {
         return beans * water;
