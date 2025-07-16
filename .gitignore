@@ -1,3 +1,4 @@
 node_modules/
 /battleship
 */node_modules
+.env
