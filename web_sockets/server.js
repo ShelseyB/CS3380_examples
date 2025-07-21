@@ -1,4 +1,4 @@
-import WebSocket, {WebSocketServer} from "ws";
+import { WebSocketServer } from "ws";
 
 const wss = new WebSocketServer({ port: 3000 });
 
@@ -9,11 +9,17 @@ wss.on("connection", (ws) => {
 
     ws.on("message", (message) => {
         console.log("Received a message from the client: %s", message);
-
+h
         if (true) {
             ws.close();
         }
     });
 
+    ws.on("close", () => {
+        console.log("connection has been closed");
+    });
 
+    ws.on("error", (err) => {
+        console.log("An error has occured", err);
+    });
 });
