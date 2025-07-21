@@ -21,19 +21,23 @@ Reflect.set(obj, propName, "something else");
 Reflect.defineProperty(obj, propName, {value: "something else", writable: false});
 console.log(obj);
 
-obj[propName] = "new value";
-console.log(obj);
+// obj[propName] = "new value";
+// console.log(obj);
 
-/** OBJECT CLASS */
+// /** OBJECT CLASS */
 Object.defineProperty(obj, "name", {
     value: "My name property",
     writable: false,
     configurable: true,
-    enumerable: true
+    enumerable: false
 });
 console.log(obj);
-obj.name = "new name";
-console.log(obj);
+// obj.name = "new name";
+// console.log(obj);
+
+for (let key in obj) {
+    console.log("key", key);
+}
 
 const descriptor = Object.getOwnPropertyDescriptor(obj, "name");
 console.log("descriptor", descriptor);
@@ -41,14 +45,33 @@ console.log("descriptor", descriptor);
 const prototype = Object.getPrototypeOf(obj);
 console.log(prototype);
 
+class User {
+    constructor(name) {
+        this.name = name;
+    }
+
+    printName() {
+        console.log(this.name);
+    }
+}
+
+User.prototype.someMethod = () => {
+    return "hello";
+}
+
+const newObj = new User();
+
+console.log(Object.getPrototypeOf(newObj));
+
 const arr = [];
 const array_prototype = Object.getPrototypeOf(arr);
 console.log(array_prototype);
 
-/** Some use cases */
+// /** Some use cases */
 function addProperty(obj, propName, propValue) {
     if (!Reflect.has(obj, propName)) {
         Reflect.set(obj, propName, propValue);
+        return;
     }
     console.error(`Sorry, ${propName} cannot be overwritten`);
 }
@@ -74,7 +97,7 @@ function validateProperty(obj, propName) {
 validateProperty(person, "name");
 validateProperty(person, "occupation");
 
-/** Proxy */
+// /** Proxy */
 const handler = {
     get: (target, prop, receiver) => {
         // Custom functionality
@@ -88,9 +111,12 @@ const handler = {
         if (prop == "email" && value.indexOf("@") < 0) {
             value += "@gmail.com";
         }
-        Reflect.set(target, prop, value);
+        return Reflect.set(target, prop, value);
     },
     deleteProperty(target, property) {
+        if (property == "name") {
+            return "Sorry, that can't be deleted";
+        }
         return Reflect.deleteProperty(target, property);
     }
 }
@@ -101,4 +127,8 @@ console.log(proxy.occupation);
 
 proxy.email = "alice";
 console.log(proxy);
+
+delete proxy["name"];
+console.log(proxy);
+console.log(person);
 
