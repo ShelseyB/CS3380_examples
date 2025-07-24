@@ -1,8 +1,8 @@
 fetch('http://localhost:3000/', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-        // "Content-Type": "text/plain"
+      // 'Content-Type': 'application/json',
+        "Content-Type": "text/plain"
     },
     body: JSON.stringify({"Test string": "string"}),
   })

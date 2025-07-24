@@ -24,7 +24,7 @@ app.get("/user/:uid", (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
-    // console.log(req);
+    console.log(req);
     const { name, email } = req.body;
     res.json({ message: `Received data: Name - ${name}, Email - ${email}`});
 });

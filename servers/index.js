@@ -1,4 +1,5 @@
 import http from "http";
+import fs from "fs";
 import { parse } from "querystring";
 
 const server = http.createServer((req, res) => {
@@ -9,8 +10,20 @@ const server = http.createServer((req, res) => {
 
     // Handle different routes
     if (req.url === "/" && req.method === "GET") {
-        res.end("Welcome to CS 3380!");
-    } else if (req.url === "/" && req.method === "POST") {
+        // res.end("Welcome to CS 3380!");
+        const html = `<!DOCTYPE html>
+<html>
+<head>
+  <title>My Local Page</title>
+</head>
+<body>
+  <h1>Hello from Local Server!</h1>
+</body>
+</html>`;
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(html);
+    }
+    else if (req.url === "/" && req.method === "POST") {
         let body = "";
         // Collect the data chunks
         req.on('data', chunk => {
@@ -43,7 +56,8 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/plain' });
             res.end(JSON.stringify({msg: 'Data received successfully'}));
         });
-    } else if (req.url === "/about") {
+    }
+    else if (req.url === "/about") {
         res.end("CS 3380 is JavaScript Programming");
     } else if (req.url == "/contact") {
         res.end("Please don't try to contact us")
