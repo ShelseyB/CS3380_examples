@@ -26,3 +26,4 @@ const myBike = Vehicle("bike");
 
 console.log(myCar instanceof Car);
 console.log(myBike instanceof Bike);
+console.log(myBike instanceof Truck);

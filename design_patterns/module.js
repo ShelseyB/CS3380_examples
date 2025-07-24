@@ -23,3 +23,4 @@ CounterModule.decrement();
 console.log(CounterModule.getCount());
 CounterModule.reset();
 console.log(CounterModule.getCount());
+console.log(CounterModule.count);

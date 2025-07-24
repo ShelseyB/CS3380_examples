@@ -1,7 +1,7 @@
 // Target interface: expected interface
 class Logger {
     log(message) {
-        throw new Error("This method should be implemented by the concrete class");
+        console.log(message);
     }
 }
 
@@ -13,9 +13,8 @@ class NewLogger {
 }
 
 // Adapter: this class adapts NewLogger to the Logger interface
-class LoggerAdapter extends Logger {
+class LoggerAdapter {
     constructor(newLogger) {
-        super();
         this.newLogger = newLogger;
     }
 
@@ -25,6 +24,9 @@ class LoggerAdapter extends Logger {
 }
 
 // Client code
+
+// const logger  = new Logger();
+
 const newLogger = new NewLogger();
 const logger = new LoggerAdapter(newLogger);
 
