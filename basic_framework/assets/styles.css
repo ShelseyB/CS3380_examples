@@ -172,3 +172,7 @@ div#start-game {
       display: block;
     }
   }
+
+  p {
+    color: white;
+  }
