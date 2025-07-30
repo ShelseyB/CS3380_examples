@@ -14,7 +14,7 @@ function fixClosureMemoryLeak() {
     // Use a cleanup mechanism, e.g., clear the interval when done
     let intervalId = setInterval(doSomething, 1000);
   
-    // Stop the interval after 5 seconds to cleanup
+    // // Stop the interval after 5 seconds to cleanup
     setTimeout(() => {
       clearInterval(intervalId);
       data = null; // Nullify the reference to allow garbage collection
