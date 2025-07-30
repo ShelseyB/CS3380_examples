@@ -4,6 +4,10 @@
     console.log("In the IIFE");
 })();
 
+(function (name) {
+    console.log("Hello", name);
+})("CS 3380")
+
 const app = (function () {
     const config = {debug: true};
     return {
@@ -14,6 +18,7 @@ const app = (function () {
 })();
 
 app.start();
+console.log("config", app.config);
 
 const todoApp = (function() {
     const tasks = [];
@@ -37,3 +42,13 @@ todoApp.removeTask(1);
 todoApp.displayTasks();
 
 console.log(todoApp.tasks);
+
+const mathModule = (function () {
+    return {
+        add: (a, b) => a + b,
+        subtract: (a, b) => a - b,
+        divide: (a, b) => a / b
+    }
+})();
+
+console.log(mathModule.add(1, 2), mathModule.subtract(1, 2), mathModule.divide(1, 2))
