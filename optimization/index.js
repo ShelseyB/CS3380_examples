@@ -39,6 +39,8 @@ setTimeout(() => {
 const cache = {};
 function expensiveOperation(key) {
     // some sort of extreme math or database query or file read here
+    const val = key;
+    return val;
 }
 function getCachedData(key) {
     if (cache[key]) return cache[key];
@@ -56,6 +58,7 @@ readStream.on("data", chunk => {
 
 // 4. Optimize Database Queries
 // - Use indexing and limit query results
+const results = await db.collection('users').find({ age: { $gt: 30 } }).limit(10).toArray();
 
 // Tools for performace monitoring
 console.time("loop");
