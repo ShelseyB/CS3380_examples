@@ -31,3 +31,9 @@ const stateSalesTax = partial(calculateTax, 0.09);
 console.log(stateSalesTax(67));
 const citySalesTax = partial(calculateTax, 0.04);
 console.log(citySalesTax(67));
+
+function calculateTotalWithTax(state, city, total) {
+    return state(total) + city(total) + total;
+}
+
+console.log(calculateTotalWithTax(stateSalesTax, citySalesTax, 67));

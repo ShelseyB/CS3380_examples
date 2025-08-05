@@ -3,7 +3,7 @@ function add(a, b) {
 }
 
 const curriedAdd = a => b => a + b;
-console.log(curriedAdd(3)(6));
+console.log(curriedAdd(3)(6), add(3, 6));
 
 function multiply(a) {
     return function (b) {
@@ -14,12 +14,20 @@ function multiply(a) {
 }
 console.log(multiply(2)(7)(3));
 
+// Returns the number of arguments it accepts
+console.log(add.length, multiply.length);
+
+// Apply
+console.log(add.apply(null, [2, 3])); // "this" object, array of arguments
+
 function curry(fn) {
     return function curried(...args) {
         if (args.length >= fn.length) {
+            // console.log("args.length >= fn.length", args)
             return fn.apply(this, args);
         } else {
             return function(...nextArgs) {
+                // console.log("in function(...nextArgs", nextArgs);
                 return curried.apply(this, args.concat(nextArgs));
             }
         }
@@ -34,3 +42,13 @@ const  greetStudent = school => name => year => {
 }
 const greetUVUStudent = greetStudent("UVU");
 greetUVUStudent("Jane")(3);
+
+const greetJane = greetUVUStudent("Jane");
+greetJane(3);
+
+// Logging
+const log = level => message => console.log(`[${level}] ${message}`);
+const info = log("INFO");
+const warning = log("WARNING");
+
+info("User logged in")
