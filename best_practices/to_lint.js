@@ -1,8 +1,7 @@
-console.log("no semicolon")
+console.log("no semicolon");
 
 const something = true;
 
-
-if ("improper spacing") {
-       console.log("blah");
+if (("improper spacing" && true && false) || something) {
+    console.log("blah");
 }
